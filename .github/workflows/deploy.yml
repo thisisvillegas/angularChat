@@ -28,4 +28,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: SSH into Home Server and Pull Code
         run: |
-          ssh pi:192.168.86.35 "cd ~/dev/angularChat && git pull origin main"
+          ssh pi@192.168.86.35 "cd ~/dev/angularChat && git pull origin main"
