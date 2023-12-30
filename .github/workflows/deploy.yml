@@ -23,12 +23,24 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: testing pi server ssh connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: 0.tcp.ngrok.io
+          username: pi
+          key: ${{ secrets.ID_RSA }}
+          port: 18291
+          script: |
+            cd /home/pi/dev/angularChat
+            git config pull.rebase true
+            git pull origin main
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+     # - uses: actions/checkout@v3
 
       # Runs a set of commands using the runners shell
-      - name: SSH into Home Server and Pull Code
-        run: |
-          ssh -i ${{ secrets.SSH_KEY }} -p 15675 pi@4.tcp.ngrok.io "cd /home/pi/dev/angularChat && git config pull.rebase true && git pull origin main"
+      #- name: SSH into Home Server and Pull Code
+       # run: |
+       #   ssh -i ${{ secrets.SSH_KEY }} -p 15675 pi@4.tcp.ngrok.io "cd /home/pi/dev/angularChat && git config pull.rebase true && git pull origin main"
 
 
