@@ -26,12 +26,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Setup SSH Key
-        run: |
-          echo "$SSH_KEY" > ~/.ssh/home-server-key
-          chmod 600 ~/.ssh/home-server-key
-          ssh-keyscan -t rsa 192.168.86.35 >> ~/.ssh/known_hosts
-
       # Runs a set of commands using the runners shell
       - name: SSH into Home Server and Pull Code
         run: |
