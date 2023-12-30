@@ -29,6 +29,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: SSH into Home Server and Pull Code
         run: |
-          ssh -i ~/.ssh/home-server-key pi@192.168.86.35 "cd /home/pi/dev/angularChat && git config pull.rebase true && git pull origin main"
+          ssh -i ~/.ssh/home-server-key -p 15675 pi@4.tcp.ngrok.io "cd /home/pi/dev/angularChat && git config pull.rebase true && git pull origin main"
 
 
